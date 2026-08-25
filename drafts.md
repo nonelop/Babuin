@@ -29,3 +29,5 @@ answer {
         profile_slug: "john_doe"
     }
 }
+
+Статусы: SUCCESSFUL - Успех NOT_FOUND - не найденно INVALID_REQUEST - невалидный запрос CONFLICT - догадайтесь

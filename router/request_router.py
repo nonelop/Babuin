@@ -10,7 +10,9 @@ def router(request: dict):
         operation = actions[1]
 
     else:
-        return
+        return {
+            "status": "INVALID_REQUEST",
+        }
 
     match operation:
         case "new_profile":

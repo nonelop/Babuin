@@ -14,5 +14,4 @@ while True:
 
     answer = router(request)
 
-    if answer:
-        print(answer)
+    print(answer)
