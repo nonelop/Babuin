@@ -19,4 +19,17 @@ def router(request: dict):
             name = data.get("name")
             username = data.get("username")
 
-            new_profile(name, username)
+            preanswer = new_profile(name, username)
+
+            status, profile_id = preanswer
+
+            return {
+                "status": status,
+                "data": {
+                    "id": profile_id
+                }
+            }
+        case _:
+            return {
+                "status": "NOT_FOUND",
+            }
