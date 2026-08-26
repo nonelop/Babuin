@@ -4,6 +4,21 @@ import os
 
 path = os.path.join(os.path.dirname(__file__), "database.db")
 
+def init_database():
+
+    connection = sqlite3.connect(path)
+    cursor = connection.cursor()
+
+    cursor.execute("""CREATE TABLE IF NOT EXISTS profiles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE,
+        name TEXT,
+        reg_time INTEGER
+    )""")
+
+    connection.commit()
+    connection.close()
+
 def new_profile(name: str, username: str | None):
 
     connection = sqlite3.connect(path)
