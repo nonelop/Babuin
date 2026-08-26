@@ -1,6 +1,13 @@
 from server_data import database_operations
 
 def new_profile(name: str, username: str | None):
-    answer = database_operations.new_profile(name, username)
+    preanswer = database_operations.new_profile(name, username)
 
-    return answer
+    status, profile_id = preanswer
+
+    return {
+        "status": status,
+        "data": {
+            "id": profile_id
+        }
+    }

@@ -31,3 +31,10 @@ def get_profile(target: int | str):
         
     elif type(target) is str:
         cursor.execute("SELECT * FROM profiles WHERE username = ?", (target,))
+
+    profile = cursor.fetchone()
+
+    if profile:
+        return ("SUCCESSFUL", profile)
+    else:
+        return ("NOT_FOUND", None)

@@ -1,5 +1,6 @@
 from methods.chats.new_chat import new_chat
 from methods.profiles.new_profile import new_profile
+from methods.profiles.get_profile import get_profile
 
 def router(request: dict):
     if request and request.get("action"):
@@ -21,16 +22,23 @@ def router(request: dict):
             name = data.get("name")
             username = data.get("username")
 
-            preanswer = new_profile(name, username)
+            answer = new_profile(name, username)
 
-            status, profile_id = preanswer
+            return answer
+        
+        case "get_profile":
+            data = request.get("data", {})
 
-            return {
-                "status": status,
-                "data": {
-                    "id": profile_id
-                }
-            }
+            target = data.get("target")
+
+            try:
+                target = int(target)
+                answer = get_profile(target)
+            except:
+                answer = get_profile(target)
+
+            return answer
+
         case _:
             return {
                 "status": "NOT_FOUND",
